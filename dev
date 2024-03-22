@@ -1,0 +1,43 @@
+#! /bin/bash
+
+# Check Docker installation
+if ! command -v docker &> /dev/null; then
+    echo "Docker is not running or installed. Please, run Docker or Docker Desktop to continue."
+    exit 1
+fi
+
+# Check docker compose and define the command according to OS
+if ! command -v docker-compose &> /dev/null; then
+  DOCKER_COMMAND="docker compose" # WSL
+else
+  DOCKER_COMMAND="docker-compose" # Unix
+fi
+
+# Get the parameter from terminal
+COMMAND=$1
+
+case $COMMAND in
+
+    install) cp src/binaries/latest.tar.gz . && \
+      tar xfz latest.tar.gz && \
+      rm -f latest.tar.gz && \
+      cp src/config/wp-config-dev.php wordpress/wp-config.php ;;
+
+    build) ${DOCKER_COMMAND} build ;;
+
+    up) ${DOCKER_COMMAND} up -d --remove-orphans ;;
+
+    down) ${DOCKER_COMMAND} down ;;
+
+    restart) ${DOCKER_COMMAND} down && \
+      ${DOCKER_COMMAND} up -d --remove-orphans ;;
+
+    logs) ${DOCKER_COMMAND} logs -f ;;
+
+    exec) docker exec -it php-fpm bash ;;
+
+    remove) sudo rm -rf database/ wordpress/ ;;
+
+    *) echo "Command not found" ;;
+
+esac
