@@ -74,3 +74,11 @@ cd src/binaries
 sudo rm latest.tar.gz
 wget http://wordpress.org/latest.tar.gz
 ```
+
+### dev: line 2: $'\r': command not found
+
+Run this command to fix trailing on bash files
+
+```sh
+sed -i 's/\r$//' dev
+```
