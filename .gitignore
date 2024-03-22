@@ -1,0 +1,15 @@
+wordpress/
+database/
+/src/wp-content/uploads/
+/src/wp-content/languages/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
