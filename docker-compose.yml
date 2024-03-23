@@ -32,8 +32,9 @@ services:
         volumes:
             - './wordpress:/application'
             - './phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+            - './src/wp-content:/application/wp-content'
         ports:
-            - '8080:80'
+            - '80:80'
 
     php-fpm:
         container_name: php-fpm
