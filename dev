@@ -23,7 +23,7 @@ case $COMMAND in
       rm -f latest.tar.gz && \
       cp src/config/wp-config-dev.php wordpress/wp-config.php ;;
 
-    build) ${DOCKER_COMMAND} build ;;
+    build) ${DOCKER_COMMAND} build --no-cache ;;
 
     up) ${DOCKER_COMMAND} up -d --remove-orphans ;;
 
