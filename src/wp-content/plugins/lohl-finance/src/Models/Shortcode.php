@@ -16,6 +16,12 @@ class Shortcode
 	 */
 	protected $atts = [];
 
+	/**
+	 * Shorcode content
+	 * @var string
+	 */
+	protected $content = "";
+
 	public function __construct()
 	{
 		add_shortcode( $this->name, [$this, 'run'] );
@@ -35,12 +41,15 @@ class Shortcode
 	 * Runs the shortcode setup
 	 *
 	 * @param array $atts
+	 * @param string $content
 	 *
 	 * @return string
 	 */
-	public function run(array $atts = []) : string
+	public function run(array $atts = [], string $content = "") : string
 	{
 		$this->atts = $atts;
+
+		$this->content = $content;
 
 		return $this->handle();
 	}
