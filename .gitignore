@@ -16,3 +16,4 @@ database/
 *.log
 
 .env
+/src/wp-content/themes/hello-elementor/
