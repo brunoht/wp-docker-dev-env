@@ -16,7 +16,7 @@ class Bootstrap
 
 	public function __construct()
 	{
-		$this->loader();
+		add_action('init', [$this, 'loader']);
 
 		add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
 	}
