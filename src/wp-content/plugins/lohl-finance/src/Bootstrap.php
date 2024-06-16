@@ -28,11 +28,13 @@ class Bootstrap
 	 */
 	function enqueueScripts() : void
 	{
-		$this->readFiles('assets/css/', function ($path, $url, $file){
+		$this->readFiles('assets/css/', function ($path, $url, $file)
+		{
 			wp_enqueue_style(basename($file), $url . $file, null, time(), 'all' );
 		});
 
-		$this->readFiles('assets/js/', function ($path, $url, $file){
+		$this->readFiles('assets/js/', function ($path, $url, $file)
+		{
 			wp_enqueue_script(basename($file), $url . $file, 'jquery', time(), true );
 		});
 	}
@@ -46,8 +48,10 @@ class Bootstrap
 	{
 		foreach ($this->registerLoaders as $path => $namespace)
 		{
-			$this->readFiles($path, function ($path, $url, $file) use ($namespace) {
+			$this->readFiles($path, function ($path, $url, $file) use ($namespace)
+			{
 				$class = $namespace . pathinfo($path . $file, PATHINFO_FILENAME);
+
 				if (class_exists($class)) new $class();
 			});
 		}
