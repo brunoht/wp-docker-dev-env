@@ -10,10 +10,8 @@
 
 if ( !defined('WPINC') ) die();
 
-$bootstrapPath = plugin_dir_path(__FILE__) . 'Bootstrap.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
-if ( !file_exists($bootstrapPath) ) die();
-
-require_once $bootstrapPath;
+use Lohl\Finance\Bootstrap;
 
 $bootstrap = new Bootstrap();

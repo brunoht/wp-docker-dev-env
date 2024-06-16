@@ -1,0 +1,17 @@
+{
+    "name": "lohl/finance",
+    "description": "Lohl Finance Payment Management",
+    "type": "plugin",
+    "autoload": {
+        "psr-4": {
+            "Lohl\\Finance\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bruno Henrique Trindade",
+            "email": "bruno.trindade@grancursosonline.com.br"
+        }
+    ],
+    "require": {}
+}
