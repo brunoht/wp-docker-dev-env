@@ -8,10 +8,12 @@
  * Author URL: https://brunoh.com.br
  */
 
-function greetings($content)
-{
-    $message = "<p>Obrigado!!!</p>";
-    return $content . $message;
-}
+if ( !defined('WPINC') ) die();
 
-add_action('the_content', 'greetings');
+$bootstrapPath = plugin_dir_path(__FILE__) . 'Bootstrap.php';
+
+if ( !file_exists($bootstrapPath) ) die();
+
+require_once $bootstrapPath;
+
+$bootstrap = new Bootstrap();
