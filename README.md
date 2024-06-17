@@ -59,8 +59,8 @@ If you have any trouble with permission, just run these commands:
 > change [user] to your actual logged user
 
 ```sh
-sudo chown -R [user]:www-data wordpress src/wp-content/
-sudo chmod -R 775 wordpress/ src/wp-content/
+sudo chown -R [user]:www-data wordpress src/wp-content/ src/assets/cache/
+sudo chmod -R 775 wordpress/ src/wp-content/ src/assets/cache/
 ```
 
 ### Updating Wordpress Core

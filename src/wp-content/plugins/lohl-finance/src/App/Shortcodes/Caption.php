@@ -10,6 +10,6 @@ class Caption extends Shortcode
 
 	protected function handle(): string
 	{
-		return '<span class="caption">' . $this->content . '</span>';
+		return $this->view(['content' => $this->content]);
 	}
 }

@@ -22,8 +22,11 @@ class Shortcode
 	 */
 	protected $content = "";
 
+	private $template;
+
 	public function __construct()
 	{
+		$this->template = new Template();
 		add_shortcode( $this->name, [$this, 'run'] );
 	}
 
@@ -52,5 +55,18 @@ class Shortcode
 		$this->content = $content;
 
 		return $this->handle();
+	}
+
+	/**
+	 * Render the view on App/Shortcodes/[shortcodename].html
+	 *
+	 * @param $content
+	 * @param $view
+	 *
+	 * @return string
+	 */
+	protected function view(array $content = [], $view = null)
+	{
+		return $this->template->shortcode($view ?? $this->name, $content);
 	}
 }
