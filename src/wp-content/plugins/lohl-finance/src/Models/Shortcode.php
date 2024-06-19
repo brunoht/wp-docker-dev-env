@@ -2,6 +2,8 @@
 
 namespace Lohl\Finance\Models;
 
+use Lohl\Finance\Providers\Template;
+
 class Shortcode
 {
 	/**
@@ -17,7 +19,7 @@ class Shortcode
 	protected $atts = [];
 
 	/**
-	 * Shorcode content
+	 * Shortcode content
 	 * @var string
 	 */
 	protected $content = "";
@@ -26,7 +28,8 @@ class Shortcode
 
 	public function __construct()
 	{
-		$this->template = new Template();
+		$this->template = Template::use();
+
 		add_shortcode( $this->name, [$this, 'run'] );
 	}
 
@@ -60,12 +63,12 @@ class Shortcode
 	/**
 	 * Render the view on App/Shortcodes/[shortcodename].html
 	 *
-	 * @param $content
-	 * @param $view
+	 * @param array $content
+	 * @param string|null $view
 	 *
 	 * @return string
 	 */
-	protected function view(array $content = [], $view = null)
+	protected function view(array $content = [], string $view = null) : string
 	{
 		return $this->template->shortcode($view ?? $this->name, $content);
 	}

@@ -11,7 +11,8 @@ class Bootstrap
 	 * @var string[]
 	 */
 	private $registerLoaders = [
-		"App/Shortcodes/" => "Lohl\\Finance\\App\\Shortcodes\\"
+		"App/Shortcodes/" => "Lohl\\Finance\\App\\Shortcodes\\",
+		"App/Backend/" => "Lohl\\Finance\\App\\Backend\\",
 	];
 
 	public function __construct()
